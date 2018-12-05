@@ -11,7 +11,7 @@ There are other flexible ways to handle the data such as slitting various inform
 * in the table would make this kind of system more easier to implement but due to the
 * availablity of the this feare on older database system, i didnt want to stretch the answer.
 */
-
+drop database employee_data;
 CREATE DATABASE employee_data;
 
 USE employee_data;
@@ -19,6 +19,7 @@ USE employee_data;
 CREATE TABLE IF NOT EXISTS `employees` (
     `id` int(255) NOT NULL AUTO_INCREMENT,
     `ssn` varchar(30) NULL,    
+    `name` varchar(100) NOT NULL,
     `id_code` varchar(30) NOT NULL,
     `is_current_employee` varchar(4) NOT NULL,
     `email` varchar(100) NOT NULL,
@@ -77,4 +78,15 @@ CREATE TABLE IF NOT EXISTS `logs` (
 );
 
 
-select * from employees inner join employees_info_french on employees.id = employees_info_french.id;
+INSERT INTO `employee_data`.`employees` (`id`, `ssn`, `name`, `id_code`, `is_current_employee`, `email`, `phone`, `address`, `birth_date`, `date_created`, `last_modified`) VALUES (0, 'WA1299676990', 'ZINO ADIDI', 'QW12200R49', 'YES', 'zinoadidi@gmail.com', '+37257853542', 'Suur-Sojamae', CURDATE(), NOW(), NOW());
+INSERT INTO `employee_data`.`employees_info_english` (`id`, `employees_id`, `Introduction`, `previous_work_experience`, `education_information`, `date_created`, `last_modified`) VALUES ('0', '0', 'data in english', 'data in english', 'data in english', NOW(), NOW());
+INSERT INTO `employee_data`.`employees_info_french` (`id`, `employees_id`, `Introduction`, `previous_work_experience`, `education_information`, `date_created`, `last_modified`) VALUES ('0', '0', 'data in french', 'data in french', 'data in french', NOW(), NOW());
+INSERT INTO `employee_data`.`employees_info_spanish` (`id`, `employees_id`, `Introduction`, `previous_work_experience`, `education_information`, `date_created`, `last_modified`) VALUES ('0', '0', 'data in spanish', 'data in spanish', 'data in spanish', NOW(), NOW());
+
+
+select * from employees 
+inner join employees_info_french on employees.id = employees_info_french.id
+inner join employees_info_spanish on employees.id = employees_info_spanish.id
+inner join employees_info_english on employees.id = employees_info_english.id;
+
+
