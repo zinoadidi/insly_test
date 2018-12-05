@@ -1,17 +1,19 @@
 
 /* 
-* Program to "print out your name with one of php loops" 
+* Create a database structure to store employee information.  
 * by Zino Adidi
 * Insly Test
 
 Note:
-There are other flexible ways to handle the data such as slitting various information 
+* There are other flexible ways to handle the data such as spliting various information 
 * such that this information can be easily analysed but i tried to follow the question 
-* to the latter so as not to deviate. Also, the use of JSON data type for specific columns
-* in the table would make this kind of system more easier to implement but due to the
-* availablity of the this feare on older database system, i didnt want to stretch the answer.
+* so as not to deviate. Also, the use of JSON data type for specific columns
+* in the table would make this kind of system more easier to implement but due to lack of
+* availablity of the JSON feature on older database system, i didnt want to submit a code 
+* that would not run in the end due to compactibility issues.
 */
-drop database employee_data;
+/* drop database employee_data; */
+
 CREATE DATABASE employee_data;
 
 USE employee_data;
@@ -85,8 +87,8 @@ INSERT INTO `employee_data`.`employees_info_spanish` (`id`, `employees_id`, `Int
 
 
 select * from employees 
-inner join employees_info_french on employees.id = employees_info_french.id
-inner join employees_info_spanish on employees.id = employees_info_spanish.id
-inner join employees_info_english on employees.id = employees_info_english.id;
+inner join employees_info_french on employees.email = 'zinoadidi@gmail.com' && employees_info_french.id = employees.id
+inner join employees_info_spanish on employees_info_spanish.id = employees.id
+inner join employees_info_english on employees_info_english.id = employees.id;
 
 
