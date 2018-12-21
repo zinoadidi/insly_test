@@ -199,7 +199,7 @@
                             <input type="range" min="100" max = "100000" name="carValue" value ="100" id="CarValue"  step="2" oninput="updateElementValue('CarValue')" required>
                         </div>
                     </div>   
-                    <div>
+                    <div> 
                         <h4>
                             <label>TAX Percentage (0 - 100%)</label>
                         </h4>
