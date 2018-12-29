@@ -15,7 +15,16 @@
     $isSubmitted = false;
     $answerObject = new stdClass();
 
+    // check if input complies with expected data
     if(ISSET($_POST['carValue'])){
+        /* if(
+            $_POST['carValue'] < 100 || $_POST['carValue'] > 100000 ||
+            $_POST['taxValue'] < 0 || $_POST['taxValue'] > 100 ||
+            $_POST['installmentValue'] < 1 || $_POST['installmentValue'] > 12 
+        ){
+            $error = "Kindly follow the discription given to provide the required information";
+        }else{} */
+
         $isSubmitted = true;
 
         $calculate = new InsuranceCalculator();
@@ -68,7 +77,7 @@
 
         public function generateAnswerTable ($answerObject){
             $answerTable ="";
-            if($answerObject->installments >1){
+            if($answerObject->installments){
                 // insert table head
                 $answerTable = '<tr id="answerTableHead"><td></td><td class="bold">Policy<td/>';
                 for($columns=1; $columns<=$answerObject->installments; $columns++){
@@ -204,7 +213,7 @@
                             <label>TAX Percentage (0 - 100%)</label>
                         </h4>
                         <div>
-                            <label >Tax Percentage: </label>
+                            <label >Tax Percentage: </label>    
                             <b><label id="showSelectedTaxValue">12</label> %</b>
                         </div>
                         <div>
@@ -246,7 +255,7 @@
         </div>
     </body>
 
-    <div id="errorDiv">
+    <div id="errorDiv" styl="color:red">
         <p><?php echo $error; ?></p>
     </div>  
 </html>
